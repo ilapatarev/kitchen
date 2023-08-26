@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +6,12 @@
     <title>Title</title>
 </head>
 <body>
+<ul>
+  <!-- ... other menu items ... -->
+    {% if user.is_authenticated %}
+        <li><a href="{% url 'profile' %}">My Profile</a></li>
+    {% endif %}
+</ul>
 {% block content %}
 {% endblock %}
 </body>

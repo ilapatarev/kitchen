@@ -1,5 +1,6 @@
 from django import forms
-from .models import KitchenUser
+from .models import KitchenUser, Profile
+
 
 class UserRegistrationForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
@@ -24,3 +25,8 @@ class UserRegistrationForm(forms.ModelForm):
 class UserLoginForm(forms.Form):
     email = forms.EmailField()
     password = forms.CharField(widget=forms.PasswordInput)
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['first_name', 'last_name', 'age', 'cooking_description', 'image']
