@@ -2,14 +2,19 @@
 {% extends 'base.html' %}
 {% block content %}
     {% if user.is_authenticated %}
-        <p>Yes</p>
+
+        <ul>
+            <li>
+                <a href="{% url 'add_recipe' %}">Add recipe</a>
+            </li>
+        </ul>
+        <button><a href="{% url 'logout' %}">Logout</a></button>
         {{ user.email }}
       {% else %}
-      <p>no</p>
+        <button><a href="{% url 'login' %}">Login</a></button>
+        <button><a href="{% url 'register' %}">Register</a></button>
       {% endif %}
-    <button><a href="{% url 'login' %}">Login</a></button>
-    <button><a href="{% url 'register' %}">Register</a></button>
-    <button><a href="{% url 'logout' %}">Logout</a></button>
+
 
 
 {% endblock %}

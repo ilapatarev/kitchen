@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Add Recipe</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div id="ingredient-container">
+      <textarea class="ingredient-input" rows="1" name="ingredients">{{ form.ingredients.value }}</textarea>
+    </div>
+    <button type="button" id="add-ingredient">Add Ingredient</button>
+    <div id="direction-container">
+      <textarea class="direction-input" rows="10" name="directions">{{ form.directions.value }}</textarea>
+    </div>
+    <button type="button" id="add-direction">Add Direction</button>
+    <button type="submit">Add Recipe</button>
+  </form>
+
+  <script>
+    // JavaScript code to dynamically add more ingredient and direction inputs
+    const addIngredientButton = document.getElementById('add-ingredient');
+    const addDirectionButton = document.getElementById('add-direction');
+    const ingredientContainer = document.getElementById('ingredient-container');
+    const directionContainer = document.getElementById('direction-container');
+
+    addIngredientButton.addEventListener('click', () => {
+      const ingredientInput = document.createElement('textarea');
+      ingredientInput.className = 'ingredient-input';
+      ingredientInput.rows = 1;
+      ingredientInput.name = 'ingredients';
+      ingredientContainer.appendChild(ingredientInput);
+    });
+
+    addDirectionButton.addEventListener('click', () => {
+      const directionInput = document.createElement('textarea');
+      directionInput.className = 'direction-input';
+      directionInput.rows = 10;
+      directionInput.name = 'directions';
+      directionContainer.appendChild(directionInput);
+    });
+  </script>
+{% endblock %}

@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'kitchen.accounts',
+    'kitchen.recipes',
+    'crispy_forms',
 
 ]
 
@@ -81,7 +83,7 @@ WSGI_APPLICATION = 'kitchen.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "kitchen",
+        "NAME": "new_kitchen",
         "USER": "postgres",
         "PASSWORD": "postgres",
         "HOST": "127.0.0.1",

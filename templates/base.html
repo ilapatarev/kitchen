@@ -4,12 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="{% static 'style/home.css' %}">
 </head>
 <body>
 <ul>
   <!-- ... other menu items ... -->
     {% if user.is_authenticated %}
         <li><a href="{% url 'profile' %}">My Profile</a></li>
+        <li><a href="{% url 'home' %}">Home</a></li>
     {% endif %}
 </ul>
 {% block content %}
