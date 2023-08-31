@@ -1,0 +1,36 @@
+{% extends 'base.html' %} }
+{% block content %}
+    {%  for recipe in recipes %}
+        <h2>{{ recipe.name }}</h2>
+          <p>{{ recipe.short_description }}</p>
+          <p>{{ recipe.prep_time }}</p>
+          <p>{{ recipe.cook_time }}</p>
+          <p>{{ recipe.cool_time }}</p>
+          <p>{{ recipe.freeze_time }}</p>
+          <p>{{ recipe.total_time }}</p>
+            {% if recipe.image %}
+                <img src="{{ recipe.image.url }}" alt="">
+            {% endif %}
+            <ul>
+            {% for ing in recipe.ingredients %}
+
+                <li>
+                    {{ ing }}
+                </li>
+
+
+            {% endfor %}
+            </ul>
+            {% for step in recipe.directions %}
+                <p>{{ step }}</p>
+            {% endfor %}
+
+          <p>{{ recipe.calories }}</p>
+          <p>{{ recipe.carbs }}</p>
+          <p>{{ recipe.protein }}</p>
+        {% if recipe.user == request.user %}
+            <a href="{% url 'update_recipe' pk=recipe.pk %}">Edit recipe</a>
+            <a href="{% url 'delete_recipe' pk=recipe.pk %}">Delete recipe </a>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

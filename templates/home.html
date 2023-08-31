@@ -6,6 +6,10 @@
         <ul>
             <li>
                 <a href="{% url 'add_recipe' %}">Add recipe</a>
+
+            </li>
+            <li>
+                <a href="{% url 'recipe_list' %}">Recipes</a>
             </li>
         </ul>
         <button><a href="{% url 'logout' %}">Logout</a></button>
@@ -14,6 +18,7 @@
         <button><a href="{% url 'login' %}">Login</a></button>
         <button><a href="{% url 'register' %}">Register</a></button>
       {% endif %}
+
 
 
 

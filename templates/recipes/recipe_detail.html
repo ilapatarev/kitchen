@@ -9,17 +9,20 @@
   <p>{{ recipe.freeze_time }}</p>
   <p>{{ recipe.total_time }}</p>
     <img src="{{ recipe.image.url }}" alt="">
-    <p>{{ recipe.image }}</p>
-{% for ing in recipe.ingredients %}
-    <p>{{ ing }}</p>
-{% endfor %}
-  <p>{{ recipe.directions }}</p>
+
+    {% for ing in recipe.ingredients %}
+        <p>{{ ing }}</p>
+    {% endfor %}
+    {% for step in recipe.directions %}
+        <p>{{ step }}</p>
+    {% endfor %}
+
   <p>{{ recipe.calories }}</p>
   <p>{{ recipe.carbs }}</p>
   <p>{{ recipe.protein }}</p>
 
 
 
-  <a href="{% url 'edit_recipe' recipe.pk %}">Edit Recipe</a>
-  <a href="{% url 'delete_recipe' recipe.pk %}">Delete Recipe</a>
+  <a href="{% url 'update_recipe' pk=recipe.pk %}">Edit Recipe</a>
+  <a href="{% url 'delete_recipe' pk=recipe.pk %}">Delete Recipe</a>
 {% endblock %}

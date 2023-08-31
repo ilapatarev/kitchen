@@ -1,21 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>Add Recipe</h2>
+  <h2>Edit Recipe</h2>
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
+
     <div id="ingredient-container">
-      <textarea class="ingredient-input" rows="1" name="ingredients_0"></textarea>
+      {% for ingredient in recipe.ingredients %}
+        <textarea class="ingredient-input" rows="1" name="ingredients">{{ ingredient }}</textarea>
+      {% endfor %}
     </div>
     <button type="button" id="add-ingredient">Add Ingredient</button>
 
     <div id="direction-container">
-      <textarea class="direction-input" rows="10" name="directions_0"></textarea>
+      {% for direction in recipe.directions %}
+        <textarea class="direction-input" rows="10" name="directions">{{ direction }}</textarea>
+      {% endfor %}
     </div>
     <button type="button" id="add-direction">Add Direction</button>
 
-    <button type="submit">Add Recipe</button>
+    <button type="submit">Update Recipe</button>
   </form>
 
   <script>
@@ -23,14 +28,14 @@
     const addDirectionButton = document.getElementById('add-direction');
     const ingredientContainer = document.getElementById('ingredient-container');
     const directionContainer = document.getElementById('direction-container');
-    let ingredientCounter = 1;
-    let directionCounter = 1;
+    let ingredientCounter = {{ recipe.ingredients|length }};
+    let directionCounter = {{ recipe.directions|length }};
 
     addIngredientButton.addEventListener('click', () => {
       const ingredientInput = document.createElement('textarea');
       ingredientInput.className = 'ingredient-input';
       ingredientInput.rows = 1;
-      ingredientInput.name = `ingredients_${ingredientCounter}`;
+      ingredientInput.name = 'ingredients';
       ingredientContainer.appendChild(ingredientInput);
       ingredientCounter++;
     });
@@ -39,7 +44,7 @@
       const directionInput = document.createElement('textarea');
       directionInput.className = 'direction-input';
       directionInput.rows = 10;
-      directionInput.name = `directions_${directionCounter}`;
+      directionInput.name = 'directions';
       directionContainer.appendChild(directionInput);
       directionCounter++;
     });
