@@ -8,14 +8,20 @@
 
     <div id="ingredient-container">
       {% for ingredient in recipe.ingredients %}
-        <textarea class="ingredient-input" rows="1" name="ingredients">{{ ingredient }}</textarea>
+        <div class="ingredient-group">
+          <textarea class="ingredient-input" rows="1" name="ingredients">{{ ingredient }}</textarea>
+          <button type="button" class="remove-ingredient">Remove</button>
+        </div>
       {% endfor %}
     </div>
     <button type="button" id="add-ingredient">Add Ingredient</button>
 
     <div id="direction-container">
       {% for direction in recipe.directions %}
-        <textarea class="direction-input" rows="10" name="directions">{{ direction }}</textarea>
+        <div class="direction-group">
+          <textarea class="direction-input" rows="10" name="directions">{{ direction }}</textarea>
+          <button type="button" class="remove-direction">Remove</button>
+        </div>
       {% endfor %}
     </div>
     <button type="button" id="add-direction">Add Direction</button>
@@ -32,21 +38,49 @@
     let directionCounter = {{ recipe.directions|length }};
 
     addIngredientButton.addEventListener('click', () => {
-      const ingredientInput = document.createElement('textarea');
-      ingredientInput.className = 'ingredient-input';
-      ingredientInput.rows = 1;
-      ingredientInput.name = 'ingredients';
+      const ingredientInput = document.createElement('div');
+      ingredientInput.className = 'ingredient-group';
+      ingredientInput.innerHTML = `
+        <textarea class="ingredient-input" rows="1" name="ingredients"></textarea>
+        <button type="button" class="remove-ingredient">Remove</button>
+      `;
       ingredientContainer.appendChild(ingredientInput);
       ingredientCounter++;
     });
 
     addDirectionButton.addEventListener('click', () => {
-      const directionInput = document.createElement('textarea');
-      directionInput.className = 'direction-input';
-      directionInput.rows = 10;
-      directionInput.name = 'directions';
+      const directionInput = document.createElement('div');
+      directionInput.className = 'direction-group';
+      directionInput.innerHTML = `
+        <textarea class="direction-input" rows="10" name="directions"></textarea>
+        <button type="button" class="remove-direction">Remove</button>
+      `;
       directionContainer.appendChild(directionInput);
       directionCounter++;
+    });
+
+    // Function to remove ingredients
+    function removeIngredient(event) {
+      const ingredientGroup = event.target.parentElement;
+      ingredientGroup.remove();
+    }
+
+    // Function to remove directions
+    function removeDirection(event) {
+      const directionGroup = event.target.parentElement;
+      directionGroup.remove();
+    }
+
+    // Add event listeners to remove buttons
+    const removeIngredientButtons = document.querySelectorAll('.remove-ingredient');
+    const removeDirectionButtons = document.querySelectorAll('.remove-direction');
+
+    removeIngredientButtons.forEach(button => {
+      button.addEventListener('click', removeIngredient);
+    });
+
+    removeDirectionButtons.forEach(button => {
+      button.addEventListener('click', removeDirection);
     });
   </script>
 {% endblock %}
