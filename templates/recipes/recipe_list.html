@@ -28,9 +28,11 @@
           <p>{{ recipe.calories }}</p>
           <p>{{ recipe.carbs }}</p>
           <p>{{ recipe.protein }}</p>
+            <a href="{% url 'recipe_detail' pk=recipe.pk %}">Recipe detail </a>
         {% if recipe.user == request.user %}
             <a href="{% url 'update_recipe' pk=recipe.pk %}">Edit recipe</a>
             <a href="{% url 'delete_recipe' pk=recipe.pk %}">Delete recipe </a>
+
         {% endif %}
     {% endfor %}
 {% endblock %}

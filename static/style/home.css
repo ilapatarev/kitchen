@@ -1,3 +1,11 @@
 body {
     background-color: rgba(237, 206, 253, 0.44);
 }
+.star-rating {
+    font-size: 20px; /* Adjust the font size as needed */
+    color: #cccccc; /* Default star color (gray) */
+}
+
+.star-rating.full {
+    color: #f0dd00; /* Full star color (yellow) */
+}

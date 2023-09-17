@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'kitchen.accounts',
     'kitchen.recipes',
     'crispy_forms',
+    'kitchen.review',
 
 ]
 
