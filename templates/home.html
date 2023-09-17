@@ -1,6 +1,7 @@
 
 {% extends 'base.html' %}
 {% block content %}
+    <a href="{% url 'recipe_list' %}">Recipes</a>
     {% if user.is_authenticated %}
 
         <ul>

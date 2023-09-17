@@ -34,40 +34,45 @@ def add_recipe(request):
 
     return render(request, 'recipes/add_recipe.html', {'form': form})
 
-@login_required
+
 def recipe_detail(request, pk):
     recipe = get_object_or_404(Recipe, pk=pk)
-    user_has_reviewed = Review.objects.filter(recipe=recipe, user=request.user).exists()
+    user_has_reviewed = False
+    average_rating = None
+    review_form = None  # Initialize the review_form variable
 
-    if request.method == 'POST':
-        review_form = ReviewForm(request.POST)
-        if review_form.is_valid():
-            if user_has_reviewed:
-                # User has already left a review
-                return render(request, 'recipes/recipe_detail.html', {
-                    'recipe': recipe,
-                    'user_has_reviewed': user_has_reviewed,
-                })
-            else:
-                # Save the new review
-                review = review_form.save(commit=False)
-                review.user = request.user
-                review.recipe = recipe
-                review.save()
-                return redirect('recipe_detail', pk=recipe.pk)
-    else:
-        review_form = ReviewForm()
+    if request.user.is_authenticated:
+        user_has_reviewed = Review.objects.filter(recipe=recipe, user=request.user).exists()
 
-    average_rating = recipe.review_set.aggregate(Avg('rating'))['rating__avg']
+        if request.method == 'POST':
+            review_form = ReviewForm(request.POST)
+            if review_form.is_valid():
+                if user_has_reviewed:
+                    # User has already left a review
+                    return render(request, 'recipes/recipe_detail.html', {
+                        'recipe': recipe,
+                        'user_has_reviewed': user_has_reviewed,
+                        'review_form': review_form,  # Pass the form even if it's not used
+                    })
+                else:
+                    # Save the new review
+                    review = review_form.save(commit=False)
+                    review.user = request.user
+                    review.recipe = recipe
+                    review.save()
+                    return redirect('recipe_detail', pk=recipe.pk)
+        else:
+            review_form = ReviewForm()
+
+        # Calculate the average rating
+        average_rating = recipe.review_set.aggregate(Avg('rating'))['rating__avg']
 
     return render(request, 'recipes/recipe_detail.html', {
         'recipe': recipe,
         'user_has_reviewed': user_has_reviewed,
-        'review_form': review_form,
+        'review_form': review_form,  # Always pass the review_form
         'average_rating': average_rating,
     })
-
-
 
 
 @login_required

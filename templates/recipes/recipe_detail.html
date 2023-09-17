@@ -22,23 +22,25 @@
   <p>{{ recipe.protein }}</p>
 
 
-
+{% if user.is_authenticated %}
     {% if recipe.user == request.user %}
         <a href="{% url 'update_recipe' pk=recipe.pk %}">Edit recipe</a>
         <a href="{% url 'delete_recipe' pk=recipe.pk %}">Delete recipe </a>
     {% endif %}
     {% if user != recipe.user %}
-    {% if not user_has_reviewed %}
-        <form method="post" action="{% url 'add_review' recipe.pk %}">
-        {% csrf_token %}
-        <input type="hidden" name="review_submitted" value="True">
-        <p>You can leave review here</p>
-        <button type="submit">I Made It</button>
+        {% if not user_has_reviewed %}
+            <form method="post" action="{% url 'add_review' recipe.pk %}">
+            {% csrf_token %}
+            <input type="hidden" name="review_submitted" value="True">
+            <p>You can leave review here</p>
+            <button type="submit">I Made It</button>
 
-        </form>
-    {% else %}
-        <p>You have already left a review for this recipe.</p>
+            </form>
+        {% else %}
+            <p>You have already left a review for this recipe.</p>
+        {% endif %}
     {% endif %}
+{% endif %}
  <h3>Reviews</h3>
   {% if recipe.review_set.all %}
     <ul>
@@ -52,7 +54,7 @@
   {% else %}
     <p>No reviews yet.</p>
   {% endif %}
-    {% endif %}
+
 
   <!-- Display the average rating -->
   <p>Average Rating: {{ average_rating|default:0 }}</p>
