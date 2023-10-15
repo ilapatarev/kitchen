@@ -57,5 +57,5 @@
 
 
   <!-- Display the average rating -->
-  <p>Average Rating: {{ average_rating|default:0 }}</p>
+  <p>Average Rating: {{ recipe.average_rating|default:'No reviews yet' }}</p>
 {% endblock %}

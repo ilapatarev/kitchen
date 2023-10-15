@@ -65,13 +65,14 @@ def recipe_detail(request, pk):
             review_form = ReviewForm()
 
         # Calculate the average rating
-        average_rating = recipe.review_set.aggregate(Avg('rating'))['rating__avg']
+        # average_rating = Review.objects.filter(recipe=recipe).aggregate(Avg('rating'))['rating__avg']
+
 
     return render(request, 'recipes/recipe_detail.html', {
         'recipe': recipe,
         'user_has_reviewed': user_has_reviewed,
         'review_form': review_form,  # Always pass the review_form
-        'average_rating': average_rating,
+        # 'average_rating': average_rating,
     })
 
 

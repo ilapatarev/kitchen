@@ -1,6 +1,10 @@
 from django.contrib.postgres.fields import ArrayField
 from django.db import models
 from django.conf import settings
+from django.db.models import Avg
+
+
+
 
 class Recipe(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -20,6 +24,14 @@ class Recipe(models.Model):
     fat = models.DecimalField(max_digits=5, decimal_places=2, default=0)  # Default value
     carbs = models.DecimalField(max_digits=5, decimal_places=2, default=0)  # Default value
     protein = models.DecimalField(max_digits=5, decimal_places=2, default=0)  # Default value
+
+    def average_rating(self):
+        from kitchen.review.models import Review
+        # Calculate and return the average rating for this recipe
+        avg_rating= Review.objects.filter(recipe=self).aggregate(Avg('rating'))['rating__avg']
+        if avg_rating:
+            return round(avg_rating, 1)
+
 
     def __str__(self):
         return self.short_description
