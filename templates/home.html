@@ -13,6 +13,12 @@
                 <a href="{% url 'recipe_list' %}">Recipes</a>
             </li>
         </ul>
+        <ul>
+            Category
+            <li><a href="">Cakes</a></li>
+            <li><a href="">Icecream</a></li>
+            <li><a href="">Others</a></li>
+        </ul>
         <button><a href="{% url 'logout' %}">Logout</a></button>
         {{ user.email }}
       {% else %}
