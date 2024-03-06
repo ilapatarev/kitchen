@@ -3,19 +3,54 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="{% static 'style/home.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dessert Heaven</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style/styles.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Protest+Revolution&display=swap" rel="stylesheet">
 </head>
 <body>
-<li><a href="{% url 'home' %}">Home</a></li>
-<ul>
-  <!-- ... other menu items ... -->
-    {% if user.is_authenticated %}
-        <li><a href="{% url 'profile' %}">My Profile</a></li>
+    <header>
+        <nav class="nav-bar">
 
-    {% endif %}
-</ul>
-{% block content %}
-{% endblock %}
+            <div class="name">
+                <img id="logo"   src="../static/images/ice-cream-cone-25398_640.png" alt="logo">
+                <a class="title" href="">Desserts Heaven</a>
+
+            </div>
+            <h1></h1>
+            <ul class="links">
+                <li><a  class="nav-li" >Recipes</a></li>
+                <li><a  class="nav-li" >Register</a></li>
+                <li><a  class="nav-li" >Login</a></li>
+                <li><a  class="nav-li" >Logout</a></li>
+                </ul>
+        </nav>
+
+    </header>
+    <hr class='down'>
+
+    {% block content %}
+    {% endblock %}
+
+
+    <footer>
+        <div class="foot">
+            <hr class='down'>
+            <div class="mark">
+                <div>Powered by Ellie.</div>
+                <div class="icons">
+                    <a class="icon" href="#"><i class="fas fa-phone-alt">+359 99 99 99 99 </i></a>
+                    <a class="icon" href="#"><i class="fab fa-twitter-square"></i></a>
+                    <a class="icon" href="#"><i class="fab fa-facebook-square"></i></a>
+                    <a class="icon" href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+
+
+            </div>
+        </div>
+
+    </footer>
 </body>
 </html>

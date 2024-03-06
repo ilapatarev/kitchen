@@ -3,9 +3,9 @@
     {%  for recipe in recipes %}
         <h2>{{ recipe.name }}</h2>
           <p>{{ recipe.short_description }}</p>
-          <p>{{ recipe.prep_time }}</p>
-          <p>{{ recipe.cook_time }}</p>
-          <p>{{ recipe.cool_time }}</p>
+          <p>prep time{{ recipe.prep_time }} min</p>
+          <p>cook time{{ recipe.cook_time }} min </p>
+          <p>cool time{{ recipe.cool_time }}</p>
           <p>{{ recipe.freeze_time }}</p>
           <p>{{ recipe.total_time }}</p>
             {% if recipe.image %}
