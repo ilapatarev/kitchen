@@ -107,9 +107,9 @@ i:hover {
 }
 .info-pic {
     border-radius: 8px;
-
+    max-width: 1000px;
     height: 600px;
-    width: 1000px;
+    width: 80%;
 }
 .images {
     width: 90%;

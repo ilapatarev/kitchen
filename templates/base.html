@@ -16,15 +16,23 @@
 
             <div class="name">
                 <img id="logo"   src="../static/images/ice-cream-cone-25398_640.png" alt="logo">
-                <a class="title" href="">Desserts Heaven</a>
+                <a class="title" href="{% url 'home' %}">Desserts Heaven</a>
 
             </div>
             <h1></h1>
             <ul class="links">
-                <li><a  class="nav-li" >Recipes</a></li>
-                <li><a  class="nav-li" >Register</a></li>
-                <li><a  class="nav-li" >Login</a></li>
-                <li><a  class="nav-li" >Logout</a></li>
+                <li><a class="nav-li" href="{% url 'recipe_list' %}">Recipes</a></li>
+                {% if user.is_authenticated %}
+                
+                <li><a class="nav-li" href="{% url 'add_recipe' %}">Add recipe</a></li>
+                <li><a  class="nav-li"  href="{% url 'profile' %}">My profile</a></li>
+                <li><a  class="nav-li" href="{% url 'logout' %}" >Logout</a></li>
+                {% else %}
+                <li><a  class="nav-li" href="{% url 'register' %}" >Register</a></li>
+                <li><a  class="nav-li" href="{% url 'login' %}" >Login</a></li>
+                {% endif %}
+                
+                
                 </ul>
         </nav>
 

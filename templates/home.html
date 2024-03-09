@@ -1,34 +1,35 @@
 
 {% extends 'base.html' %}
 {% block content %}
-    <main>
-    <a href="{% url 'recipe_list' %}">Recipes</a>
-    {% if user.is_authenticated %}
+    
+    <body>
+    <div class="sidebar">
+    <a href=""><h3>Categories</h3></a>
+        <a href="#">Cakes</a>
+        <a href="#">Ice creams</a>
+        <a href="#">Cookies</a>
+        <a href="#">Candies</a>
+        <a href="#">Pies</a>
+        <a href="#">Tarts</a>
+        <a href="#">Puddings</a>
+        <a href="#">Vegan</a>
+        <a href="#">Other</a>
+    </div>
+    <div class="info">
+        <h1 id="sec-title">
+            Welcome to Sweet paradise!</h1>
+        <p id="info-text">Place for sharing recipes, especially for desserts. Find the perfect dinner finish!</p> 
+    </div>
+    
+    <div class="images">
+        <img class="info-pic" src="../static/images/ice-cream-3611698_640.jpg" alt="#">
+        
+        </div> 
 
-        <ul>
-            <li>
-                <a href="{% url 'add_recipe' %}">Add recipe</a>
-
-            </li>
-            <li>
-                <a href="{% url 'recipe_list' %}">Recipes</a>
-            </li>
-        </ul>
-        <ul>
-            Category
-            <li><a href="">Cakes</a></li>
-            <li><a href="">Icecream</a></li>
-            <li><a href="">Others</a></li>
-        </ul>
-        <button><a href="{% url 'logout' %}">Logout</a></button>
-        {{ user.email }}
-      {% else %}
-        <button><a href="{% url 'login' %}">Login</a></button>
-        <button><a href="{% url 'register' %}">Register</a></button>
-      {% endif %}
+</body>
 
 
 
 
-    </main>
+    
 {% endblock %}

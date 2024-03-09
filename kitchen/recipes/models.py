@@ -10,6 +10,20 @@ class Recipe(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     name=models.CharField(max_length=50)
     short_description = models.CharField(max_length=200)
+    CATEGORY_CHOICES = [
+	    ( 'Cakes', 'cakes'),
+	    ('Ice Cream', 'ice cream'),
+        ('Cookies', 'cookies'),
+        ('Candies', 'candies'),
+        ('Pies', 'pies'),
+        ('Tarts', 'tarts'),
+        ('Poudings', 'poudings'),
+        ('Vegan', 'vegan'),
+        ('Other', 'other'),
+
+    ]
+    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
+
     image = models.ImageField(upload_to='recipe_images/', max_length=5000000, blank=True)
     prep_time = models.IntegerField( default=0)
     cook_time = models.IntegerField( default=0)
