@@ -23,7 +23,7 @@
                     <p class="info-text">Shortly: {{ recipe.short_description }}</p>
                     <p class="info-text">Category: {{ recipe.category }}</p>
                     <p class="info-text">Preparation time: {{ recipe.total_time }} min</p>
-                    <p class="detail-lead"><a class="detail-lead-a" href="{% url 'recipe_detail' recipe.pk %}">Recipe details</a></p>
+                    <p class="detail-lead"><button class="profile-button"><a class="profile-a" href="{% url 'recipe_detail' recipe.pk %}">Recipe details</a> </button> </p>
                </article>
             
             {% endfor %}

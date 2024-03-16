@@ -2,20 +2,24 @@
 {% load static %}
 
 {% block content %}
-  <h2>Your Profile</h2>
-
-  <p><strong>First Name:</strong> {{ profile.first_name }}</p>
-  <p><strong>Last Name:</strong> {{ profile.last_name }}</p>
-  <p><strong>Age:</strong> {{ profile.age }}</p>
-  <p><strong>Short Description:</strong> {{ profile.cooking_description }}</p>
-  <p><strong>Email:</strong> {{ profile.user.email }}</p>
-    {% if profile.image %}
-        <img src="{{ profile.image.url }}" alt="Profile Image">
-    {% else %}
-        <img class="profile-pic" src="/static/images/default_profile2.png" alt="profil img"/>
-    {% endif %}
-
-
-  <a href="{% url 'update_profile' %}">Update Profile</a>
-  <a href="{% url 'delete_profile' %}">Delete Profile</a>
+    <div class="your-profile">
+        <article class="profile">
+          <h2>Your Profile</h2>
+        
+          <p class="profile-info"><strong>First Name:</strong> {{ profile.first_name }}</p>
+          <p class="profile-info"><strong>Last Name:</strong> {{ profile.last_name }}</p>
+          <p class="profile-info"><strong>Age:</strong> {{ profile.age }}</p>
+          <p class="profile-info"><strong>Short Description:</strong> {{ profile.cooking_description }}</p>
+          <p class="profile-info"><strong>Email:</strong> {{ profile.user.email }}</p>
+            {% if profile.image %}
+                <img class="profile-pic" src="{{ profile.image.url }}" alt="Profile Image">
+            {% else %}
+                <img class="profile-pic" src="/static/images/avatar-3814049_1280.webp" alt="profil img"/>
+            {% endif %}
+        
+        
+          <button class="profile-button"> <a class="profile-a" href="{% url 'update_profile' %}">Update Profile</a> </button>
+          <button class="profile-button"><a class="profile-a" href="{% url 'delete_profile' %}">Delete Profile</a> </button>
+        </article>
+    </div>
 {% endblock %}
