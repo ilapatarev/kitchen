@@ -1,9 +1,23 @@
 from django import forms
+from django.core.exceptions import ValidationError
+
 from .models import KitchenUser, Profile
 
 
+class CustomPasswordValidator:
+    def __call__(self, value):
+        if len(value) < 8:
+            raise ValidationError("Password must be at least 8 characters long.")
+        if not any(char.isalpha() for char in value):
+            raise ValidationError("Password must contain at least one letter.")
+
+
+    def get_help_text(self):
+        return "Your password must be at least 8 characters long and contain at least one letter."
+
+
 class UserRegistrationForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
+    password = forms.CharField(max_length=100, widget=forms.PasswordInput, validators=[CustomPasswordValidator()])
     confirm_password = forms.CharField(
         widget=forms.PasswordInput,
         label='Confirm Password'
@@ -13,6 +27,12 @@ class UserRegistrationForm(forms.ModelForm):
         model = KitchenUser
         fields = ['email', 'password', 'confirm_password']  # Add more fields as needed
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.fields['email'].help_text = None
+        self.fields['password'].help_text = 'Your password must contain at least 8 characters. Your password can’t be entirely numeric.'
+        self.fields['confirm_password'].help_text = None
     def clean(self):
         cleaned_data = super().clean()
         password = cleaned_data.get('password')

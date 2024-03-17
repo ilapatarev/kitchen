@@ -87,3 +87,23 @@ def delete_profile(request):
         return redirect('home')
 
     return render(request, 'account/delete_profile.html')
+
+@login_required
+def change_password(request):
+    if request.method == 'POST':
+        current_password = request.POST['current_password']
+        new_password = request.POST['new_password']
+        confirm_new_password = request.POST['confirm_new_password']
+
+        if new_password == confirm_new_password:
+            if request.user.check_password(current_password):
+                request.user.set_password(new_password)
+                request.user.save()
+                messages.success(request, 'Your password has been changed.')
+                return redirect('login')
+            else:
+                messages.error(request, 'Current password is incorrect.')
+        else:
+            messages.error(request, 'New passwords do not match.')
+
+    return render(request, 'account/change_password.html')

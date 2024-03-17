@@ -1,14 +1,19 @@
-{% extends 'base.html' %}
-
+{% extends "base.html" %}
 {% block content %}
-  <h2>Delete Profile</h2>
+    <div class="main-ep">
+        <article class="profile">
+          <h2>Confirm Deletion</h2>
+        
+          <p>Are you sure you want to delete your profile?</p>
+            
+            <form method="post">
+            {% csrf_token %}
+            <input class="profile-button" type="submit" value="Delete">
+                <button class="profile-button"><a  class="profile-a" href="{% url 'profile' %}">Cancel</a></button> 
 
-  <p>Are you sure you want to delete your profile?</p>
+            </form>
+        
 
-  <form method="post">
-    {% csrf_token %}
-    <button type="submit">Delete Profile</button>
-  </form>
-
-  <a href="{% url 'profile' %}">Cancel</a>
+          </article>
+    </div>
 {% endblock %}
