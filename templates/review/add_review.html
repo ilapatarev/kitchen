@@ -1,14 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>Add a Review for "{{ recipe.name }}"</h2>
-
-  <p>Rate this recipe:</p>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Submit Review</button>
-  </form>
-
-  <a href="{% url 'recipe_detail' pk=recipe.pk %}">Back to Recipe</a>
+    <div id="review">
+        <div class="art">
+          <h2>Add a Review for "{{ recipe.name }}"</h2>
+        
+          <p>Rate this recipe:</p>
+          <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button id="review-btn" class="profile-button" type="submit">Submit Review</button>
+          </form>
+        
+          <a id="back-recipe" href="{% url 'recipe_detail' pk=recipe.pk %}"><strong>Back to Recipe</strong></a>
+        </div>
+    </div>
 {% endblock %}

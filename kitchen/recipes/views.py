@@ -117,3 +117,6 @@ def update_recipe(request, pk):
         form = RecipeForm(instance=recipe)
 
     return render(request, 'recipes/update_recipe.html', {'form': form, 'recipe': recipe})
+def recipe_list_by_category(request, category):
+    recipes = Recipe.objects.filter(category=category)
+    return render(request, 'recipes/recipe_list_by_category.html', {'recipes': recipes, 'category': category})

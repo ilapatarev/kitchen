@@ -5,15 +5,15 @@
     <body>
     <div class="sidebar">
     <a href=""><h3>Categories</h3></a>
-        <a href="#">Cakes</a>
-        <a href="#">Ice creams</a>
-        <a href="#">Cookies</a>
-        <a href="#">Candies</a>
-        <a href="#">Pies</a>
-        <a href="#">Tarts</a>
-        <a href="#">Puddings</a>
-        <a href="#">Vegan</a>
-        <a href="#">Other</a>
+        <a href="{% url 'recipe_list_by_category' 'cakes' %}">Cakes</a>
+        <a href="{% url 'recipe_list_by_category' 'ice cream' %}">Ice creams</a>
+        <a href="{% url 'recipe_list_by_category' 'cookies' %}">Cookies</a>
+        <a href="{% url 'recipe_list_by_category' 'candies' %}">Candies</a>
+        <a href="{% url 'recipe_list_by_category' 'pies' %}">Pies</a>
+        <a href="{% url 'recipe_list_by_category' 'tarts' %}">Tarts</a>
+        <a href="{% url 'recipe_list_by_category' 'puddings' %}">Puddings</a>
+        <a href="{% url 'recipe_list_by_category' 'vegan' %}">Vegan</a>
+        <a href="{% url 'recipe_list_by_category' 'other' %}">Other</a>
     </div>
     <div class="info">
         <h1 id="sec-title">

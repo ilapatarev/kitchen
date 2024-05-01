@@ -1,61 +1,84 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>{{ recipe.name }}</h2>
-  <p>{{ recipe.short_description }}</p>
-  <p>{{ recipe.prep_time }}</p>
-  <p>{{ recipe.cook_time }}</p>
-  <p>{{ recipe.cool_time }}</p>
-  <p>{{ recipe.freeze_time }}</p>
-  <p>{{ recipe.total_time }}</p>
-    <img src="{{ recipe.image.url }}" alt="">
-
-    {% for ing in recipe.ingredients %}
-        <p>{{ ing }}</p>
-    {% endfor %}
-    {% for step in recipe.directions %}
-        <p>{{ step }}</p>
-    {% endfor %}
-
-  <p>{{ recipe.calories }}</p>
-  <p>{{ recipe.carbs }}</p>
-  <p>{{ recipe.protein }}</p>
-
-
-{% if user.is_authenticated %}
-    {% if recipe.user == request.user %}
-        <a href="{% url 'update_recipe' pk=recipe.pk %}">Edit recipe</a>
-        <a href="{% url 'delete_recipe' pk=recipe.pk %}">Delete recipe </a>
-    {% endif %}
-    {% if user != recipe.user %}
-        {% if not user_has_reviewed %}
-            <form method="post" action="{% url 'add_review' recipe.pk %}">
-            {% csrf_token %}
-            <input type="hidden" name="review_submitted" value="True">
-            <p>You can leave review here</p>
-            <button type="submit">I Made It</button>
-
-            </form>
-        {% else %}
-            <p>You have already left a review for this recipe.</p>
+   
+    <div id="recipe-detail">
+        <div class="art">
+            <h2 id="">{{ recipe.name }}</h2>
+            <p id="description" >{{ recipe.short_description }}</p>
+            <p id="avg-rating">Average Rating: {{ recipe.average_rating|default:'No reviews yet' }}</p>
+            <img class="field-pic" src="{{ recipe.image.url }}" alt="">
+            <div id="time">
+                  <p id="total-time">Total time <span>&#x27A1;</span> {{ recipe.total_time }} min.</p>
+                  <p>Preparation time <span>&#x27A1;</span> {{ recipe.prep_time }} min.</p>
+                  <p>Cook time <span>&#x27A1;</span> {{ recipe.cook_time }} min.</p>
+                  <p>Cool time <span>&#x27A1;</span> {{ recipe.cool_time }} min.</p>
+                  <p>Freeze time <span>&#x27A1;</span> {{ recipe.freeze_time }} min.</p>
+              
+            </div>
+            <div id="ingredients">
+                <p id="total-time">Ingredients</p>
+                {% for ing in recipe.ingredients %}
+                    <p>{{ ing }}</p>
+                {% endfor %}
+            </div>
+            <div id="directions">
+                <p id="total-time"><strong>Steps for preparation</strong></p>
+                {% for step in recipe.directions %}
+                    <p id="total-time">Next step</p>
+                    <p>{{ step }}</p>
+                {% endfor %}
+            </div>
+            {% if recipe.calories > 0 %}
+            <div id="nutrition">
+                <p id="total-time">Nutrition information</p>
+                  <p>Calories <span>&#x27A1;</span> {{ recipe.calories }} kcal</p>
+                  <p>Carbohydrate <span>&#x27A1;</span> {{ recipe.carbs }} g</p>
+                  <p>Protein <span>&#x27A1;</span> {{ recipe.protein }} g</p>
+                  <p>Fat <span>&#x27A1;</span>{{ recipe.fat }} g</p>
+            </div>
         {% endif %}
-    {% endif %}
-{% endif %}
- <h3>Reviews</h3>
-  {% if recipe.review_set.all %}
-    <ul>
-      {% for review in recipe.review_set.all %}
-        <li>
-          <strong>{{ review.user.email }}:</strong>
-          <p>{{ review.comment }}</p>
-        </li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>No reviews yet.</p>
-  {% endif %}
-
-
-  <!-- Display the average rating -->
-  <p>Average Rating: {{ recipe.average_rating|default:'No reviews yet' }}</p>
+        
+        
+        <div id="recipe-review">
+         <p id="total-time">Reviews</p>
+          {% if recipe.review_set.all %}
+            
+              {% for review in recipe.review_set.all %}
+                <p>
+                  <p id="total-time">User : {{ review.user.email }}</p>
+                  <p>{{ review.comment }}</p>
+                </p>
+              {% endfor %}
+            
+          {% else %}
+            <p>No reviews yet.</p>
+          {% endif %}
+        </div>
+        {% if user.is_authenticated %}
+            {% if recipe.user == request.user %}
+                <a href="{% url 'update_recipe' pk=recipe.pk %}">Edit recipe</a>
+                <a href="{% url 'delete_recipe' pk=recipe.pk %}">Delete recipe </a>
+            {% endif %}
+            {% if user != recipe.user %}
+                {% if not user_has_reviewed %}
+                    <form method="post" action="{% url 'add_review' recipe.pk %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="review_submitted" value="True">
+                    <p>You can leave review here</p>
+                    <button class="profile-button" type="submit">I Made It</button>
+        
+                    </form>
+                {% else %}
+                    <p>You have already left a review for this recipe.</p>
+                {% endif %}
+            {% endif %}
+        {% endif %}
+        
+          <!-- Display the average rating -->
+          
+    </div>
+    </div>
+    
+   
 {% endblock %}
