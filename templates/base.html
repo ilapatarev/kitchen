@@ -21,15 +21,15 @@
             </div>
             <h1></h1>
             <ul class="links">
-                <li><a class="nav-li" href="{% url 'recipe_list' %}">Recipes</a></li>
+                <li class="li-nav"><a class="nav-li" href="{% url 'recipe_list' %}">Recipes</a></li>
                 {% if user.is_authenticated %}
                 
-                <li><a class="nav-li" href="{% url 'add_recipe' %}">Add recipe</a></li>
-                <li><a  class="nav-li"  href="{% url 'profile' %}">My profile</a></li>
-                <li><a  class="nav-li" href="{% url 'logout' %}" >Logout</a></li>
+                <li class="li-nav"><a class="nav-li" href="{% url 'add_recipe' %}">Add recipe</a></li>
+                <li class="li-nav"><a  class="nav-li"  href="{% url 'profile' %}">My profile</a></li>
+                <li class="li-nav"><a  class="nav-li" href="{% url 'logout' %}" >Logout</a></li>
                 {% else %}
-                <li><a  class="nav-li" href="{% url 'register' %}" >Register</a></li>
-                <li><a  class="nav-li" href="{% url 'login' %}" >Login</a></li>
+                <li class="li-nav"><a  class="nav-li" href="{% url 'register' %}" >Register</a></li>
+                <li class="li-nav"><a  class="nav-li" href="{% url 'login' %}" >Login</a></li>
                 {% endif %}
                 
                 

@@ -1,0 +1,105 @@
+@media (max-width:600px) {
+    header {
+        height: 250px;
+        width: 450px;
+        border-radius: 4px;
+
+    }
+    body {
+        display: flex;
+        flex-direction: column;
+
+    }
+    .main {
+        top: 255px;
+        align-items: start;
+        left: 0;
+    }
+    .nav-bar {
+        flex-direction: column;
+
+    }
+    .links {
+        flex-direction: column;
+
+
+    }
+    .li-nav {
+        background-color: rgba(180, 69, 238, 0.44);
+        border: black solid 1px;
+        border-radius: 4px;
+        margin-bottom: 4px;
+    }
+    .sidebar {
+        display: none;
+
+    }
+    .nav-li {
+    text-decoration: none;
+    padding: 0;
+    color: black;
+    font-size: 25px;
+
+    }
+    .links:hover {
+
+    color: azure;
+    font-size: 24px;
+    cursor: pointer;
+
+
+    }
+    .nav-li:hover {
+        background-color: rgb(173, 18, 204);
+    }
+    .li-nav:hover {
+        background-color: rgb(173, 18, 204);
+        color: azure;
+    }
+    .main-content {
+
+        display: flex;
+        flex-direction: column;
+        justify-content:left ;
+        padding: 0 0 60px 0;
+    }
+    .pop {
+        width: 450px;
+        display: block;
+    }
+    body {
+    background-color: rgba(237, 206, 253, 0.44);
+    background-image: none;
+
+    }
+    .reg-form {
+        width: 450px;
+        margin: 0;
+    }
+    .form-register {
+        width: 400px;
+    }
+    .form-register, p {
+        width: 400px;
+        justify-content: left;
+    }
+    .main-reg {
+        justify-content: left;
+    }
+    .profile-pic {
+        width: 450px;
+    }
+    #recipe-detail {
+        width: 450px;
+        justify-content: left;
+    }
+    .art {
+        width: 450px;
+        margin: 0;
+        justify-content: left;
+
+    }
+    .field-pic {
+        width: 420px;
+    }
+}
