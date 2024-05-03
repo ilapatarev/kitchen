@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
-  <h2>Delete Recipe</h2>
-  <p>Are you sure you want to delete the recipe: <strong>{{ recipe.name }}</strong>?</p>
-  <form method="post" action="{% url 'delete_recipe' recipe.pk %}">
-    {% csrf_token %}
-    <button type="submit">Delete</button>
-    <a href="{% url 'recipe_detail' recipe.pk %}">Cancel</a>
-  </form>
+    <div id="add-recipe">
+        <div class="art">
+              <h2>Delete Recipe</h2>
+              <p>Are you sure you want to delete the recipe: <strong>{{ recipe.name }}</strong>?</p>
+              <form method="post" action="{% url 'delete_recipe' recipe.pk %}">
+                {% csrf_token %}
+                <button class="profile-button" type="submit">Delete</button>
+                <button class="profile-button"><a href="{% url 'recipe_detail' recipe.pk %}">Cancel</a></button>
+              </form>
+    </div>
+    </div>
 {% endblock %}

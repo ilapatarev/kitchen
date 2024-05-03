@@ -102,4 +102,15 @@
     .field-pic {
         width: 420px;
     }
+    #avg-rating {
+        width: 450px;
+
+        text-align: left;
+    }
+    #time {
+        text-align: left;
+    }
+    #ingredients {
+        text-align: left;
+    }
 }

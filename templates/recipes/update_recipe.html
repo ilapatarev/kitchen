@@ -1,33 +1,37 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>Edit Recipe</h2>
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-
-    <div id="ingredient-container">
-      {% for ingredient in recipe.ingredients %}
-        <div class="ingredient-group">
-          <textarea class="ingredient-input" rows="1" name="ingredients">{{ ingredient }}</textarea>
-          <button type="button" class="remove-ingredient">Remove</button>
-        </div>
-      {% endfor %}
+    <div id="add-recipe">
+        <div class="art">
+              <h2>Edit Recipe</h2>
+              <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+            
+                <div id="ingredient-container">
+                  {% for ingredient in recipe.ingredients %}
+                    <div class="ingredient-group">
+                      <textarea class="ingredient-input" rows="1" name="ingredients">{{ ingredient }}</textarea>
+                      <button class="profile-button" type="button" class="remove-ingredient">Remove</button>
+                    </div>
+                  {% endfor %}
+                </div>
+                <button type="button" id="add-ingredient">Add Ingredient</button>
+            
+                <div id="direction-container">
+                  {% for direction in recipe.directions %}
+                    <div class="direction-group">
+                      <textarea class="direction-input" rows="10" name="directions">{{ direction }}</textarea>
+                      <button class="profile-button" type="button" class="remove-direction">Remove</button>
+                    </div>
+                  {% endfor %}
+                </div>
+                <button class="profile-button" type="button" id="add-direction">Add Direction</button>
+            
+                <button class="profile-button" type="submit">Update Recipe</button>
+              </form>
     </div>
-    <button type="button" id="add-ingredient">Add Ingredient</button>
-
-    <div id="direction-container">
-      {% for direction in recipe.directions %}
-        <div class="direction-group">
-          <textarea class="direction-input" rows="10" name="directions">{{ direction }}</textarea>
-          <button type="button" class="remove-direction">Remove</button>
-        </div>
-      {% endfor %}
     </div>
-    <button type="button" id="add-direction">Add Direction</button>
-
-    <button type="submit">Update Recipe</button>
-  </form>
 
   <script>
     const addIngredientButton = document.getElementById('add-ingredient');
