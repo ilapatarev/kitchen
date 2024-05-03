@@ -2,15 +2,15 @@
 {% block content %}
     <div class="sidebar">
     <a href=""><h3>Categories</h3></a>
-        <a href="#">Cakes</a>
-        <a href="#">Ice creams</a>
-        <a href="#">Cookies</a>
-        <a href="#">Candies</a>
-        <a href="#">Pies</a>
-        <a href="#">Tarts</a>
-        <a href="#">Puddings</a>
-        <a href="#">Vegan</a>
-        <a href="#">Other</a>
+        <a href="{% url 'recipe_list_by_category' category='Cakes' %}">Cakes</a>
+        <a href="{% url 'recipe_list_by_category' category='Ice creams' %}">Ice creams</a>
+        <a href="{% url 'recipe_list_by_category' category='Cookies' %}">Cookies</a>
+        <a href="{% url 'recipe_list_by_category' category='Candies' %}">Candies</a>
+        <a href="{% url 'recipe_list_by_category' category='Pies' %}">Pies</a>
+        <a href="{% url 'recipe_list_by_category' category='Tarts' %}">Tarts</a>
+        <a href="{% url 'recipe_list_by_category' category='Pouddings' %}">Puddings</a>
+        <a href="{% url 'recipe_list_by_category' category='Vegan' %}">Vegan</a>
+        <a href="{% url 'recipe_list_by_category' category='Other' %}">Other</a>
     </div>
     <main class="main">
         <div class="main-content">

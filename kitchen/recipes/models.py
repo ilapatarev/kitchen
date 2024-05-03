@@ -11,15 +11,15 @@ class Recipe(models.Model):
     name=models.CharField(max_length=50)
     short_description = models.CharField(max_length=200)
     CATEGORY_CHOICES = [
-	    ( 'Cakes', 'cakes'),
-	    ('Ice Cream', 'ice cream'),
-        ('Cookies', 'cookies'),
-        ('Candies', 'candies'),
-        ('Pies', 'pies'),
-        ('Tarts', 'tarts'),
-        ('Poudings', 'poudings'),
-        ('Vegan', 'vegan'),
-        ('Other', 'other'),
+	    ( 'Cakes', 'Cakes'),
+	    ('Ice creams', 'Ice creams'),
+        ('Cookies', 'Cookies'),
+        ('Candies', 'Candies'),
+        ('Pies', 'Pies'),
+        ('Tarts', 'Tarts'),
+        ('Pouddings', 'Pouddings'),
+        ('Vegan', 'Vegan'),
+        ('Other', 'Other'),
 
     ]
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)

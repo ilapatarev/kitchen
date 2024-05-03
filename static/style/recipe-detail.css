@@ -68,3 +68,10 @@
 #back-recipe {
     color: black;
 }
+.field-pic {
+    border-radius: 8px;
+    /* size: 80%; */
+    height: auto;
+    width: 500px;
+
+}

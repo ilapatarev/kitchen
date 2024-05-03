@@ -1,11 +1,49 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2>Recipes - {{ category }}</h2>
+    
+    
+    <div class="sidebar">
+    <a href=""><h3>Categories</h3></a>
+        <a href="{% url 'recipe_list_by_category' category='Cakes' %}">Cakes</a>
+        <a href="{% url 'recipe_list_by_category' category='Ice creams' %}">Ice creams</a>
+        <a href="{% url 'recipe_list_by_category' category='Cookies' %}">Cookies</a>
+        <a href="{% url 'recipe_list_by_category' category='Candies' %}">Candies</a>
+        <a href="{% url 'recipe_list_by_category' category='Pies' %}">Pies</a>
+        <a href="{% url 'recipe_list_by_category' category='Tarts' %}">Tarts</a>
+        <a href="{% url 'recipe_list_by_category' category='Pouddings' %}">Puddings</a>
+        <a href="{% url 'recipe_list_by_category' category='Vegan' %}">Vegan</a>
+        <a href="{% url 'recipe_list_by_category' category='Other' %}">Other</a>
+    </div>
+    
 
-    <ul>
-        {% for recipe in recipes %}
-            <li>{{ recipe.name }}</li>
-        {% endfor %}
-    </ul>
+{% if recipes %}
+	
+ 
+<main class="main">
+        <div class="main-content">
+            {%  for recipe in recipes %}
+               
+                    <article class="pop">
+                        
+                        {% if recipe.image %}
+                            <img class="ground-pic" src="{{ recipe.image.url }}" alt="">
+                         {% endif %}
+                        <h2>{{ recipe.name }}</h2>
+                        <p class="info-text">Shortly: {{ recipe.short_description }}</p>
+                        <p class="info-text">Category: {{ recipe.category }}</p>
+                        <p class="info-text">Preparation time: {{ recipe.total_time }} min</p>
+                        <p class="detail-lead"><button class="profile-button"><a class="profile-a" href="{% url 'recipe_detail' recipe.pk %}">Recipe details</a> </button> </p>
+                   </article>
+                
+            {% endfor %}
+                </div>
+                </main>
+{% else%}
+    <div class="info">
+        <h1 id="sec-title">
+            Recipes - {{ category|capfirst }}</h1>
+    </div>
+        <p id="sec-title">No recipes found for category - {{ category|capfirst }}.</p>
+{% endif %}
 {% endblock %}
