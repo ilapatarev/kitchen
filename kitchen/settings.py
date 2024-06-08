@@ -160,7 +160,7 @@ AUTH_USER_MODEL = 'accounts.KitchenUser'
 AUTHENTICATION_BACKENDS = ['kitchen.accounts.backends.EmailBackend']
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR, 'media'
+MEDIA_ROOT = BASE_DIR/ 'media'
 
 
 
