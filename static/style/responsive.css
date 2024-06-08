@@ -75,13 +75,14 @@
     .reg-form {
         width: 450px;
         margin: 0;
+        justify-content: center;
     }
     .form-register {
         width: 400px;
     }
     .form-register, p {
         width: 400px;
-        justify-content: left;
+        justify-content: center;
     }
     .main-reg {
         justify-content: left;
@@ -112,5 +113,22 @@
     }
     #ingredients {
         text-align: left;
+    }
+    .info-pic {
+
+
+        width: 100%;
+        height: 90%;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+    .profile {
+        width: 100%;
+        height: 90%;
+    }
+    .your-profile {
+        width: 100%;
+        height: 90%;
     }
 }
