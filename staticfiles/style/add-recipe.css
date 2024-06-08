@@ -1,0 +1,18 @@
+#add-recipe {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 80px;
+
+}
+.art {
+    overflow: hidden;
+    width: 500px;
+    height: auto;
+    background-color: #e6c8e3;
+    border-radius: 8px;
+    padding: 5px;
+    margin: 16px;
+    /*font-family: 'Mochiy Pop One', sans-serif;*/
+    font-size: 16px;
+}
