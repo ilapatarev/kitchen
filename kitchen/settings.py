@@ -11,13 +11,17 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
 from pathlib import Path
-import dj_database_url
 
 from kitchen import accounts
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+import environ
+
+env = environ.Env()
+
+environ.Env.read_env()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -26,9 +30,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-^iepwnq6cddte$o_4(9d(g%b82_&&9d9z0-(nm1xf-u-+cqcj_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', 'False') == 'True'
+DEBUG = False
 
-ALLOWED_HOSTS = ['kitchen-5.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -82,10 +86,22 @@ WSGI_APPLICATION = 'kitchen.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "new_kitchen",
+#         "USER": "postgres",
+#         "PASSWORD": "postgres",
+#         "HOST": "127.0.0.1",
+#         "PORT": "5432",
+#     }
+# }
+# Render Postgres DB
+import dj_database_url
+
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.getenv('DATABASE_URL')
-    )
+    "default": dj_database_url.parse(env('DATABASE_URL'))
+
 }
 
 
