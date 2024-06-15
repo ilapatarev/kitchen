@@ -60,7 +60,10 @@ def update_profile(request):
         form = ProfileForm(request.POST, request.FILES, instance=user_profile)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Profile updated successfully')
             return redirect('profile')
+        else:
+            messages.error(request, 'Please correct the error below.')
     else:
         form = ProfileForm(instance=user_profile)
 

@@ -49,4 +49,4 @@ class UserLoginForm(forms.Form):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['first_name', 'last_name', 'age', 'cooking_description', 'image']
+        fields = ['first_name', 'last_name', 'age', 'cooking_description', 'image_url']

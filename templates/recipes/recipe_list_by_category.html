@@ -26,8 +26,8 @@
                
                     <article class="pop">
                         
-                        {% if recipe.image %}
-                            <img class="ground-pic" src="{{ recipe.image.url }}" alt="">
+                        {% if recipe.image_url %}
+                            <img class="ground-pic" src="{{ recipe.image_url }}" alt="">
                          {% endif %}
                         <h2>{{ recipe.name }}</h2>
                         <p class="info-text">Shortly: {{ recipe.short_description }}</p>

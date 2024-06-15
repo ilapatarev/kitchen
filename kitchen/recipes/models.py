@@ -24,7 +24,7 @@ class Recipe(models.Model):
     ]
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
 
-    image = models.ImageField(upload_to='recipe_images/', max_length=5000000, blank=True)
+    image_url = models.URLField(max_length=200, blank=True, null=True)
     prep_time = models.IntegerField( default=0)
     cook_time = models.IntegerField( default=0)
     freeze_time = models.IntegerField( default=0)

@@ -11,10 +11,10 @@
           <p class="profile-info"><strong>Age:</strong> {{ profile.age }}</p>
           <p class="profile-info"><strong>Short Description:</strong> {{ profile.cooking_description }}</p>
           <p class="profile-info"><strong>Email:</strong> {{ profile.user.email }}</p>
-            {% if profile.image %}
-                <img class="profile-pic" src="{{ profile.image.url }}" alt="Profile Image">
+            {% if profile.image_url %}
+                <img class="profile-pic" src="{{ profile.image_url }}" alt="Profile Image">
             {% else %}
-                <img class="profile-pic" src="/static/images/avatar-3814049_1280.webp" alt="profil img"/>
+                <img class="profile-pic" src="/static/images/avatar-3814049_1280.webp" alt="Profile image"/>
             {% endif %}
         
         
