@@ -15,7 +15,7 @@ from pathlib import Path
 from kitchen import accounts
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 import environ
 
@@ -27,7 +27,7 @@ environ.Env.read_env()
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-^iepwnq6cddte$o_4(9d(g%b82_&&9d9z0-(nm1xf-u-+cqcj_'
+SECRET_KEY = env('SECRET_KEY', default='your-default-secret-key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
