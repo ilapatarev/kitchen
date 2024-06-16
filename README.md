@@ -2,7 +2,7 @@
 Python Web Framework Project
 ***
 
-**Dessert Heaven** - Site for sharing recipes for sweets. 
+## **Dessert Heaven** - Site for sharing recipes for sweets. 
 User - You can register, login, update and delete your profile, change your pass. 
 User - When you are logged you can add, update and delete recipes in different categories. 
 User - You can also add reviews for different recipes. 
